@@ -1,0 +1,46 @@
+<odoo>
+    <record id="view_room_booking_tree" model="ir.ui.view">
+        <field name="name">room.booking.tree</field>
+        <field name="model">room.booking</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="booking_number"/>
+                <field name="room_id"/>
+                <field name="booking_name"/>
+                <field name="booking_date"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_room_booking_form" model="ir.ui.view">
+        <field name="name">room.booking.form</field>
+        <field name="model">room.booking</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="booking_number"/>
+                        <field name="room_id"/>
+                        <field name="booking_name"/>
+                        <field name="booking_date"/>
+                        <field name="status"/>
+                        <field name="booking_notes"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_process_booking" type="object" string="Proses Pemesanan" class="oe_highlight" states="draft"/>
+                    <button name="action_done_booking" type="object" string="Selesaikan Pemesanan" class="oe_highlight" states="ongoing"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_room_booking" model="ir.actions.act_window">
+        <field name="name">Pemesanan Ruangan</field>
+        <field name="res_model">room.booking</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_room_booking" name="Pemesanan Ruangan" action="action_room_booking" sequence="20"/>
+</odoo>

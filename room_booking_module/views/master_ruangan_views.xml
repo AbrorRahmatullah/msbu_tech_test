@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <!-- Tree View for Master Ruangan -->
+        <record id="view_room_master_tree" model="ir.ui.view">
+            <field name="name">room.master.tree</field>
+            <field name="model">room.master</field>
+            <field name="type">tree</field> <!-- This should be 'tree' -->
+            <field name="arch" type="xml">
+                <tree string="Master Ruangan">
+                    <field name="name"/>
+                    <field name="room_type"/>
+                    <field name="location"/>
+                    <field name="capacity"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form View for Master Ruangan -->
+        <record id="view_room_master_form" model="ir.ui.view">
+            <field name="name">room.master.form</field>
+            <field name="model">room.master</field>
+            <field name="type">form</field> <!-- This should be 'form' -->
+            <field name="arch" type="xml">
+                <form string="Master Ruangan">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="room_type"/>
+                            <field name="location"/>
+                            <field name="photo"/>
+                            <field name="capacity"/>
+                            <field name="description"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action for Master Ruangan -->
+        <record id="action_room_master" model="ir.actions.act_window">
+            <field name="name">Master Ruangan</field>
+            <field name="res_model">room.master</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_room_master_tree"/>
+        </record>
+
+        <!-- Menu Item for Master Ruangan -->
+        <record id="menu_room_master" model="ir.ui.menu">
+            <field name="name">Master Ruangan</field>
+            <field name="parent_id" ref="base.menu_base_setup"/>
+            <field name="action" ref="action_room_master"/>
+            <field name="sequence">10</field>
+        </record>
+    </data>
+</odoo>
